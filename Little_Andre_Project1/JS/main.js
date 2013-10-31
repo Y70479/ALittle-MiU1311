@@ -147,11 +147,9 @@ window.addEventListener("DOMContentLoaded", function()) {
 		editLink.addEventListener("click", editInfo);
 		editLink.innerHTML = textForEdit;
 		linksLi.appendChild(editLink);
-		
 		// Line Break
 		var breakEl = createEl("br");
 		linksLi.appendChild(breakEl);
-		
 		// Delete Link
 		var deleteLink = createEl("a");
 		deleteLink.href = "#";
@@ -161,6 +159,37 @@ window.addEventListener("DOMContentLoaded", function()) {
 		deleteLink.innerHTML = textForDelete;
 		linksLi.appendChild(deleteLink);
 	};
+	
+	// Edit Item Function.
+	function editInfo() {
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		hideForm("off");
+		// Populating the Form Field.
+		getId("platform").value = items.platforms[1];
+		getId("name").value = items.titles[1];
+		getId("genre").value = items.genres[1];
+		var radios = document.forms[0].add;
+		for(var i=0;i<radios.length; i++) {
+			if(radios[i].value === "NSTC" && item.regions === "NSTC") {
+				radios[i].setAttribute("checked", "checked");
+			} else {
+				if(radios[i].value === "PAL" && item.regions === "PAL") {
+				radios[i].setAttribute("checked", "checked");
+			}
+		};
+		getId("rating").value = items.ratings[1];
+		getId("condition").value = items.conditions[1];
+		getId("date").value = items.releaseDates[1];
+		// Remove initial listener from the submit button.
+		savingData.removeEventListener("click", saveData);
+		getId("submitInfo").value = "Edit Game Info";
+		var editVGameInfo = getId("submitInfo");
+		editVGameInfo.addEventListener("click", validate);
+		editVGameInfo.key = this.key;
+	};
+	
+	
 	
 	
 	
