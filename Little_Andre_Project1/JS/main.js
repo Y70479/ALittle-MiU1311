@@ -37,6 +37,28 @@ window.addEventListener("DOMContentLoaded", function()) {
 			}
 		}
 	};
+	// Hide Form Data.
+	function hideForm(f) {
+		switch(f) {
+			case "on":
+				getId("docForm").style.display = "none";
+				getId("clearData").style.display = "inline";
+				getId("displayData").style.display = "none";
+				getId("addNewGame").style.display = "inline";
+				break; 
+			case "off":
+				getId("docForm").style.display = "block";
+				getId("clearData").style.display = "inline";
+				getId("displayData").style.display = "inline";
+				getId("addNewGame").style.display = "none";
+				getId("storedItems").style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	};
+	
+	
 	
 	
 	
