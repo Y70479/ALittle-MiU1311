@@ -57,7 +57,33 @@ window.addEventListener("DOMContentLoaded", function()) {
 				return false;
 		}
 	};
-	
+	// Save Data Function
+	function saveData(key) {
+		if(!key) {
+			var randomNumber = Math.floor(Math.random()*100000000001);
+		} else {
+			randomNumber = key;
+		}
+		// Get all Form Data
+		getSelectedRadio();
+		var item = {};
+			item.platforms = ["Platform: ", getId("platform").value];
+			item.titles = ["Title: ", getId("name").value];
+			item.genres = ["Genre: ", getId("genre").value];
+			item.regions = ["Region: ", addValue];
+			item.ratings = ["ESRB Rating: ", getId("rating").value];
+			item.conditions = ["Condition of the Game: ", getId("condition").value];
+			item.releaseDates = ["Release Date: ", getId("date").value];
+			item.addInfo = ["Additional Info: ", getId("infoBox").value];
+			// Save Data to local Storage.
+			localStorage.setItem(randomNumber, JSON.stringify(item));
+			alert("The Game has been Saverd to your Vault!");
+			window.location.reload();
+			
+			// Links and Click Submit Events.
+			var savingData = getId("submitInfo");
+			savingData.addEventListener("click", validate);
+	};
 	
 	
 	
