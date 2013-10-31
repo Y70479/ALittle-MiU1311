@@ -201,7 +201,7 @@ window.addEventListener("DOMContentLoaded", function()) {
 	};
 	
 	// Clear Data Function.
-	function clearingData() {
+	function clearInfo() {
 		if(localStorage.length === 0) {
 			alert("There are no games in your vault to clear.");
 		} else {
