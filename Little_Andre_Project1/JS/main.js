@@ -120,10 +120,36 @@ window.addEventListener("DOMContentLoaded", function()) {
 		}
 	};
 	
+	// Add Platform images.
+	function getImage(pngName, newSubList) {
+		var imageLi = createEl("li");
+		newSubList.appendChild(imageLi);
+		var newImage = createEl("img");
+		var setSrc = newImage.setAttribute("src", "images/"+ pngName + ".png");
+		imageLi.appendChild(newImage);
+	};
+	
+	// Default Data Load Function.
+	function defaultData() {
+		for(var m in json) {
+			var randomNumber = Math.floor(Math.random()*100000000001);
+			localStorage.setItem(randomNumber, JSON.stringify(json[m]));
+		}
+	};
 	
 	
 	
 	
+	
+	
+	
+	
+	
+	// Default Variables
+	var consoles = ["--Select A Platform--", "PlayStation 3", "XBox 360", "Wii U", "3DS"],
+		addValue,
+		errMsg = getId("errors");
+		
 	// Links and Click Submit Events.
 	var savingData = getId("submitInfo");
 	savingData.addEventListener("click", validate);
