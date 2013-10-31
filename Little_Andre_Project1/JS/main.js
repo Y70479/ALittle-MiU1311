@@ -189,6 +189,17 @@ window.addEventListener("DOMContentLoaded", function()) {
 		editVGameInfo.key = this.key;
 	};
 	
+	// Delete item Function. 
+	function deleteInfo() {
+		var ask = confirm("Are you sure want to delete this game from your vault?");
+		if(ask) {
+			localStorage.removeItem(this.key);
+			window.location.reload();
+		} else {
+			alert("Game was not Deleted!")
+		}
+	};
+	
 	
 	
 	
