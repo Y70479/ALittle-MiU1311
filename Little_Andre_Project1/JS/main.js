@@ -137,6 +137,30 @@ window.addEventListener("DOMContentLoaded", function()) {
 		}
 	};
 	
+	// Edit and Delete Links Function
+	function editDeleteLinks() {
+		// Edit Link
+		var editLink = createEl("a");
+		editLink.href = "#";
+		editLink.key = key;
+		var textForEdit = "Edit Game Info";
+		editLink.addEventListener("click", editInfo);
+		editLink.innerHTML = textForEdit;
+		linksLi.appendChild(editLink);
+		
+		// Line Break
+		var breakEl = createEl("br");
+		linksLi.appendChild(breakEl);
+		
+		// Delete Link
+		var deleteLink = createEl("a");
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var textForDelete = "Delete Game Info"
+		deleteLink.addEventListener("click", deleteInfo);
+		deleteLink.innerHTML = textForDelete;
+		linksLi.appendChild(deleteLink);
+	};
 	
 	
 	
