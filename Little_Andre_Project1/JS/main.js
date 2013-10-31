@@ -37,6 +37,7 @@ window.addEventListener("DOMContentLoaded", function()) {
 			}
 		}
 	};
+	
 	// Hide Form Data.
 	function hideForm(f) {
 		switch(f) {
@@ -57,6 +58,7 @@ window.addEventListener("DOMContentLoaded", function()) {
 				return false;
 		}
 	};
+	
 	// Save Data Function
 	function saveData(key) {
 		if(!key) {
@@ -79,18 +81,53 @@ window.addEventListener("DOMContentLoaded", function()) {
 			localStorage.setItem(randomNumber, JSON.stringify(item));
 			alert("The Game has been Saverd to your Vault!");
 			window.location.reload();
-			
-			// Links and Click Submit Events.
-			var savingData = getId("submitInfo");
-			savingData.addEventListener("click", validate);
+	};
+	
+	// Display Data Function
+	function showData() {
+		if(localStorage.length === 0) {
+			alert("There are no Saved Games in your Vault at this time, so default data has been added.");
+			defaultData();
+		} else {
+			hideForm("on");
+			var newDiv = createEl("div");
+			newDiv.setAttribute("id", "storedItems");
+			document.body.appendChild(newDiv);
+			var newFieldSet = createEl("fieldset");
+			newFieldSet.setAttribute("id", "infoFieldSet");
+			newDiv.appendChild(newFieldSet);
+			var newList = createEl("ul");
+			newFieldSet.appendChild(newList);
+			getId("storedItems").style.display = "block";
+			for(var i=0; ls=localStorage.length; i<ls; i++) {
+				var newLi = createEl("li");
+				var linksLi = createEl("li");
+				newList.appendChild(newLi);
+				var key = localStorage.key(i);
+				var value = localStorage.getItem(key);
+				var obj = JSON.parse(value);
+				var newSubList = createEl("ul");
+				newLi.appendChild(newSubList);
+				for(var e in obj) {
+					var newSubLi = createEl("li");
+					newSubList.appendChild(newSubLi);
+					var optSubText = obj[e][0]+" "+obj[e][1];
+					newSubLi.innerHTML = optSubText;
+					newSubList.appendChild(linksLi);
+				}
+				editDeleteLinks(localStorage.key(i), linksLi);
+			}
+		}
 	};
 	
 	
 	
 	
 	
-	
-	
-	
-	
-}
+	// Links and Click Submit Events.
+	var savingData = getId("submitInfo");
+	savingData.addEventListener("click", validate);
+	var displayingData = getId("displayData");
+	displayingData.addEventListener("click", showData);
+		
+};
