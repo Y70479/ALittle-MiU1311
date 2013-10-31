@@ -200,7 +200,17 @@ window.addEventListener("DOMContentLoaded", function()) {
 		}
 	};
 	
-	
+	// Clear Data Function.
+	function clearingData() {
+		if(localStorage.length === 0) {
+			alert("There are no games in your vault to clear.");
+		} else {
+			alert("All saved games in your vault has been cleared.");
+			localStorage.clear();
+			window.location.reload();
+			return false;
+		}
+	};
 	
 	
 	
