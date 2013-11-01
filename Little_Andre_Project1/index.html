@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 
-<!--
+<!-- 
 Andre Little
 Class: MiU
 Term: 1311
-Instructor: Ms. Alarcon
-completed Date: 10/30/2013
-Project 1: Gaming Vault - Launch Page
+Completed Date: 10/31/2013
+Project 1: Gaming Vault - Feature, Search, Browse
 -->
 
 <html>
@@ -15,23 +14,42 @@ Project 1: Gaming Vault - Launch Page
 		<meta name="description" content="An app that helps you keep track of your Video Game Collection." />
 		<meta name="keywords" content="Gaming Vault, Save Gaming Collection, Video Games, PS3, XBox 360, Wii U, WII, 3DS" />
 		<meta name="robots" content="index, follow" />
-		<meta name="viewport" content="user-scaleable=no, width=device-width" />
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
 		<meta name="viewport" content="target-densitydpi=device-dpi" />
 		<meta name="HandheldFriendly" content="true" />
 		<meta name="MobileOptimized" content="320" />
+		<!-- Mobile IE needs ClearType for smoothing fonts -->
+	    <meta http-equiv="cleartype" content="on">
 		<title>Gaming Vault</title>
-		<link rel="stylesheet" href="CSS/style.css" type="text/css" />
+		<!-- Style Sheets -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+		<link rel="stylesheet" href="css/styles.css" type="text/css" />
+		<script src="js/libs/modernizr.custom.min.js"></script>
+		<!-- End of Style Sheets -->
 	</head>
 	<body>
+		<!--Start of the Home Page-->
+		<div data-role="page" id="home">
+			<div data-role="header" data-position="fixed">
+				<h1>Home</h1>
+			</div>
+		</div>
+		
 		<header>
-			<!--This is where my Custom Made Logo will go-->
-			<h1 id="homeImg">Gaming Vault</h1>
+			<!-- This is where my custom made logo will go for the app. -->
+			<h1><a href="additem.html"><img src="images/CTA.png" class="cta"></a></h1>
 		</header>
-		<article>
-			<!--This is the main Description explaining what the App does-->
-			<h2>Description</h2>
-			<p  id="homeDescript">Let us help you keep track of your favorite video games, on your favorite console.</p>
-		</article>
-		<a href="addItem.html">Add A Game Now!</a>
+		<!-- This is the Start of my Browse and Search Feature -->
+		<div>
+			<label for="search"></label><input type="text" id="search" placeholder="Search for a Game...." /><input type="submit" value="Search Vault">
+		</div>
+		<nav id="browseSection">
+			<h2 id="browseTitle">Browse by..</h2>
+				<p class="bLinks"><a href="platform.html">Platform</a></p>
+				<p class="bLinks"><a href="title.html">Title</a></p>
+				<p class="bLinks"><a href="genre.html">Genre</a></p>
+				<p class="bLinks"><a href="region.html">Region</a></p>
+				<p class="bLinks"><a href="rating.html">ESRB Ratings</a></p>
+		</nav>
 	</body>
 </html>
